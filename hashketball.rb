@@ -192,7 +192,7 @@ def big_shoe_rebounds
       biggest_shoe = memo if biggest_shoe.values[0] > memo.values[0]
       memo
     end
-    binding.pry
+  
     biggest_shoe
   end
 
