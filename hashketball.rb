@@ -127,7 +127,7 @@ def game_hash
 end
 
 def all_players
-  game_hash
+  game_hash[:home][:players] + game_hash[:home][:players]
 
 end
 
