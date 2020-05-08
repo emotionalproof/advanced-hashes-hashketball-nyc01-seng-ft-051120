@@ -184,7 +184,7 @@ end
 
 def big_shoe_rebounds
   #biggest_shoe = {"name" => 0 }
-  game_hash.each do |location, attribute|
+  game_hash.redcue do |biggest_shoe, (location, attribute)|
     game_hash[location][:players].reduce({"name" => 0}) do |memo, player_stats|
       name = player_stats[:player_name]
       shoe = player_stats[:shoe]
