@@ -140,6 +140,7 @@ def num_points_scored(player)
 
   all_players.each do |player_stats|
     if player_stats[:player_name] == player
+      binding.pry
       return player_stats[:points]
     end
   end
