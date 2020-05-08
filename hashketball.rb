@@ -199,6 +199,8 @@ def big_shoe_rebounds
     biggest_shoe
   end
 
+  name = biggest_shoe.value[0]
+
   game_hash.each do |location, v| #keys: home, away
     game_hash[location][:players].each do |player_stats|
       if player_stats[:player_name] == biggest_shoe.keys[0]
