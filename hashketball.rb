@@ -201,7 +201,9 @@ def big_shoe_rebounds
 
   game_hash.each do |location, v| #keys: home, away
     game_hash[location][:players].each do |player_stats|
-      return player_stats[:rebounds] if player_stats[:player_name] == biggest_shoe.keys[0]
+      if player_stats[:player_name] == biggest_shoe.keys[0]
+        return player_stats[:rebounds] 
+      end
     end
   end
 
