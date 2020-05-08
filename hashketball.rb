@@ -126,6 +126,11 @@ def game_hash
   }
 end
 
+def all_players
+  game_hash
+
+end
+
 def num_points_scored(player)
   game_hash.each do |location, v| #keys: home, away
     game_hash[location][:players].each do |player_stats|
