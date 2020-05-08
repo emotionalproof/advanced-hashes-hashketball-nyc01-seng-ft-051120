@@ -183,15 +183,17 @@ def player_stats(player)
 end
 
 def big_shoe_rebounds
-  biggest_shoe = {"name" => 0 }
-  game_hash.each do |location, attribute|
+  #biggest_shoe = {"name" => 0 }
+  big_shoe = game_hash.each do |location, attribute|
     game_hash[location][:players].reduce({"name" => 0}) do |memo, player_stats|
       name = player_stats[:player_name]
       shoe = player_stats[:shoe]
-      memo = { name => shoe } if shoe > memo.values[0]
+      if shoe > memo.values[0]
+        memo = { name => shoe }
+      end
       memo
     end
-  
+
   end
 
   game_hash.each do |location, v| #keys: home, away
