@@ -200,7 +200,7 @@ def big_shoe_rebounds
     biggest_shoe
   end
 
-  name = biggest_shoe.keys[0]
+  name = really_biggest_shoe.keys[0]
 
   game_hash.each do |location, v| #keys: home, away
     game_hash[location][:players].each do |player_stats|
