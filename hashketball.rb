@@ -196,6 +196,7 @@ def big_shoe_rebounds
     if biggest_shoe.values[0] < team_shoe.values[0]
       biggest_shoe = team_shoe
     end
+    really_biggest_shoe = biggest_shoe
     biggest_shoe
   end
 
