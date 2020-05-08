@@ -1,4 +1,4 @@
-# Write your code below game_hash
+require 'pry'
 def game_hash
   {
     home: {
@@ -126,4 +126,92 @@ def game_hash
   }
 end
 
-# Write code here
+def all_players
+  game_hash[:home][:players] + game_hash[:home][:players]
+
+end
+
+def num_points_scored(player)
+  game_hash.each do |location, v| #keys: home, away
+    game_hash[location][:players].each do |player_stats|
+      return player_stats[:points] if player_stats[:player_name] == player
+    end
+  end
+
+
+end
+
+
+def shoe_size(player)
+  game_hash.each do |location, v| #keys: home, away
+    game_hash[location][:players].each do |player_stats|
+      return player_stats[:shoe] if player_stats[:player_name] == player
+    end
+  end
+end
+
+def team_colors(team)
+  game_hash.each do |location, v| #keys: home, away
+    return game_hash[location][:colors] if game_hash[location][:team_name] == team
+  end
+end
+
+def team_names
+  game_hash.reduce([]) do |teams, (location, attribute)|
+    teams << game_hash[location][:team_name]
+    teams
+  end
+end
+
+def player_numbers(team_name)
+  game_hash.reduce([]) do |jersey_numbers, (location, attribute)|
+    if team_name == game_hash[location][:team_name]
+      game_hash[location][:players].each { |player| jersey_numbers << player[:number] }
+    end
+    jersey_numbers
+  end
+end
+
+def player_stats(player)
+  game_hash.each do |location, attribute|
+    game_hash[location][:players].each do |player_stats|
+      if player_stats[:player_name] == player
+      return player_stats.select { |hash, (k, v)| v.class != String }
+      end
+    end
+  end
+end
+
+def rebounds(player)
+  game_hash.each do |location, v|
+    game_hash[location][:players].each do |player_stats|
+      return player_stats[:rebounds] if player_stats[:player_name] == player
+    end
+  end
+end
+
+def big_shoe_rebounds
+  really_biggest_shoe = {"name" => 0 }
+  game_hash.reduce({"name" => 0 }) do |biggest_shoe, (location, attribute)|
+    team_shoe = game_hash[location][:players].reduce({"name" => 0}) do |memo, player_stats|
+      name = player_stats[:player_name]
+      shoe = player_stats[:shoe]
+      if shoe > memo.values[0]
+        memo = { name => shoe }
+      end
+      memo
+    end
+    if biggest_shoe.values[0] < team_shoe.values[0]
+      biggest_shoe = team_shoe
+    end
+    really_biggest_shoe = biggest_shoe
+    biggest_shoe
+  end
+
+  name = really_biggest_shoe.keys[0]
+
+  rebounds(name)
+
+
+
+end
