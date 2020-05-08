@@ -193,8 +193,8 @@ def big_shoe_rebounds
       end
       memo
     end
-    if shoe > memo.values[0]
-      memo = { name => shoe }
+    if biggest_shoe.value[0] < team_shoe.values[0]
+      biggest_shoe = { name => shoe }
     biggest_shoe
   end
 
