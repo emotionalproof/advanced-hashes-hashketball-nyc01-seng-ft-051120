@@ -132,18 +132,13 @@ def all_players
 end
 
 def num_points_scored(player)
-  #game_hash.each do |location, v| #keys: home, away
-  #  game_hash[location][:players].each do |player_stats|
-  #    return player_stats[:points] if player_stats[:player_name] == player
-  #  end
-  #end
-
-  all_players.each do |player_stats|
-    if player_stats[:player_name] == player
-      binding.pry
-      return player_stats[:points]
+  game_hash.each do |location, v| #keys: home, away
+    game_hash[location][:players].each do |player_stats|
+      return player_stats[:points] if player_stats[:player_name] == player
     end
   end
+
+  
 end
 
 
