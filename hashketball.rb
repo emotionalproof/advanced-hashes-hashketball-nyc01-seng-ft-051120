@@ -189,11 +189,9 @@ def big_shoe_rebounds
       name = player_stats[:player_name]
       shoe = player_stats[:shoe]
       memo = { name => shoe } if shoe > memo.values[0]
-      biggest_shoe = memo if biggest_shoe.values[0] > memo.values[0]
       memo
     end
   
-    biggest_shoe
   end
 
   game_hash.each do |location, v| #keys: home, away
