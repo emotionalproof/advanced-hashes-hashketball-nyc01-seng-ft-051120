@@ -193,7 +193,7 @@ def big_shoe_rebounds
       end
       memo
     end
-
+    biggest_shoe
   end
 
   game_hash.each do |location, v| #keys: home, away
