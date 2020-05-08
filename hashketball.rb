@@ -182,6 +182,14 @@ def player_stats(player)
   end
 end
 
+def rebounds(player)
+  game_hash.each do |location, v|
+    game_hash[location][:players].each do |player_stats|
+      return player_stats[:rebounds] if player_stats[:player_name] == player
+    end
+  end
+end
+
 def big_shoe_rebounds
   really_biggest_shoe = {"name" => 0 }
   game_hash.reduce({"name" => 0 }) do |biggest_shoe, (location, attribute)|
