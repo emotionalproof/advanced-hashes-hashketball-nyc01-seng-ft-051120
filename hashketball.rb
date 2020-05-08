@@ -126,78 +126,74 @@ def game_hash
   }
 end
 
-#def num_points_scored(player)
-#  game_hash.each do |location, v| #keys: home, away
-#    game_hash[location][:players].each do |player_stats|
-#      return player_stats[:points] if player_stats[:player_name] == player
-#    end
-#  end
-#end
-#
-#
-#def shoe_size(player)
-#  game_hash.each do |location, v| #keys: home, away
-#    game_hash[location][:players].each do |player_stats|
-#      return player_stats[:shoe] if player_stats[:player_name] == player
-#    end
-#  end
-#end
-#
-#def team_colors(team)
-#  game_hash.each do |location, v| #keys: home, away
-#    return game_hash[location][:colors] if game_hash[location][:team_name] == team
-#  end
-#end
-#
-#def team_names
-#  game_hash.reduce([]) do |teams, (location, attribute)|
-#    teams << game_hash[location][:team_name]
-#    teams
-#  end
-#end
-#
-#def player_numbers(team_name)
-#  game_hash.reduce([]) do |jersey_numbers, (location, attribute)|
-#    if team_name == game_hash[location][:team_name]
-#      game_hash[location][:players].each { |player| jersey_numbers << player[:number] }
-#    end
-#    jersey_numbers
-#  end
-#end
-#
-#def player_stats(player)
-#  game_hash.each do |location, attribute|
-#    game_hash[location][:players].each do |player_stats|
-#      if player_stats[:player_name] == player
-#      return player_stats.select { |hash, (k, v)| v.class != String }
-#      end
-#    end
-#  end
-#end
-#
-#def big_shoe_rebounds
-#  biggest_shoe = {"name" => 0 }
-#  game_hash.each do |location, attribute|
-#    game_hash[location][:players].reduce({"name" => 0}) do |memo, player_stats|
-#      name = player_stats[:player_name]
-#      shoe = player_stats[:shoe]
-#      memo = { name => shoe } if shoe > memo.values[0]
-#      biggest_shoe = memo if biggest_shoe.values[0] > memo.values[0]
-#      memo
-#    end
-#    biggest_shoe
-#  end
-#
-#  game_hash.each do |location, v| #keys: home, away
-#    game_hash[location][:players].each do |player_stats|
-#      return player_stats[:rebounds] if player_stats[:player_name] == biggest_shoe.keys[0]
-#    end
-#  end
-
-
-  def num_points_scored(player)
-    all_players = game_hash[:home][:players].merge(game_hash[:away][:players])
-    puts all_players
+def num_points_scored(player)
+  game_hash.each do |location, v| #keys: home, away
+    game_hash[location][:players].each do |player_stats|
+      return player_stats[:points] if player_stats[:player_name] == player
+    end
   end
+end
+
+
+def shoe_size(player)
+  game_hash.each do |location, v| #keys: home, away
+    game_hash[location][:players].each do |player_stats|
+      return player_stats[:shoe] if player_stats[:player_name] == player
+    end
+  end
+end
+
+def team_colors(team)
+  game_hash.each do |location, v| #keys: home, away
+    return game_hash[location][:colors] if game_hash[location][:team_name] == team
+  end
+end
+
+def team_names
+  game_hash.reduce([]) do |teams, (location, attribute)|
+    teams << game_hash[location][:team_name]
+    teams
+  end
+end
+
+def player_numbers(team_name)
+  game_hash.reduce([]) do |jersey_numbers, (location, attribute)|
+    if team_name == game_hash[location][:team_name]
+      game_hash[location][:players].each { |player| jersey_numbers << player[:number] }
+    end
+    jersey_numbers
+  end
+end
+
+def player_stats(player)
+  game_hash.each do |location, attribute|
+    game_hash[location][:players].each do |player_stats|
+      if player_stats[:player_name] == player
+      return player_stats.select { |hash, (k, v)| v.class != String }
+      end
+    end
+  end
+end
+
+def big_shoe_rebounds
+  biggest_shoe = {"name" => 0 }
+  game_hash.each do |location, attribute|
+    game_hash[location][:players].reduce({"name" => 0}) do |memo, player_stats|
+      name = player_stats[:player_name]
+      shoe = player_stats[:shoe]
+      memo = { name => shoe } if shoe > memo.values[0]
+      biggest_shoe = memo if biggest_shoe.values[0] > memo.values[0]
+      memo
+    end
+    biggest_shoe
+  end
+
+  game_hash.each do |location, v| #keys: home, away
+    game_hash[location][:players].each do |player_stats|
+      return player_stats[:rebounds] if player_stats[:player_name] == biggest_shoe.keys[0]
+    end
+  end
+
+
 
 end
