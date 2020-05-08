@@ -193,7 +193,7 @@ def big_shoe_rebounds
       end
       memo
     end
-    if biggest_shoe.value[0] < team_shoe.values[0]
+    if biggest_shoe.values[0] < team_shoe.values[0]
       biggest_shoe = team_shoe
     end
     biggest_shoe
