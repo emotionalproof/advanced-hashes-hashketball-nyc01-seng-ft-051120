@@ -183,7 +183,7 @@ def player_stats(player)
 end
 
 def big_shoe_rebounds
-  biggest_shoe = {"name" => 0 }
+  really_biggest_shoe = {"name" => 0 }
   game_hash.reduce({"name" => 0 }) do |biggest_shoe, (location, attribute)|
     team_shoe = game_hash[location][:players].reduce({"name" => 0}) do |memo, player_stats|
       name = player_stats[:player_name]
