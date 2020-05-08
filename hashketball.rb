@@ -184,8 +184,8 @@ end
 
 def big_shoe_rebounds
   #biggest_shoe = {"name" => 0 }
-  game_hash.reduce do |biggest_shoe, (location, attribute)|
-    game_hash[location][:players].reduce({"name" => 0}) do |memo, player_stats|
+  game_hash.reduce({"name" => 0 }) do |biggest_shoe, (location, attribute)|
+    team_shoe = game_hash[location][:players].reduce({"name" => 0}) do |memo, player_stats|
       name = player_stats[:player_name]
       shoe = player_stats[:shoe]
       if shoe > memo.values[0]
@@ -193,6 +193,8 @@ def big_shoe_rebounds
       end
       memo
     end
+    if shoe > memo.values[0]
+      memo = { name => shoe }
     biggest_shoe
   end
 
