@@ -139,7 +139,7 @@ def num_points_scored(player)
   #end
 
   all_players.each do |player_stats|
-    p player_stats
+    p player_stats[:player_name]
   end
 end
 
